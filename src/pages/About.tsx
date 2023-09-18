@@ -118,7 +118,7 @@ function About() {
               </Typography>
               <Typography variant="body1" component="p">
                 Used Java Spring Boot for maintaining and improving RESTful
-                API's, API Gateway and Lambda to handle API routing for RDS
+                API&apos;s, API Gateway and Lambda to handle API routing for RDS
                 database
               </Typography>
             </CardContent>

@@ -13,7 +13,10 @@ function PhotoPage() {
   const photosToUse: [] = getPhotosApi.data ? getPhotosApi.data : [];
 
   useEffect(() => {
-    getPhotosApi.request();
+    async function callPhotos() {
+      await getPhotosApi.request();
+    }
+    callPhotos();
   }, [getPhotosApi]);
 
   const filteredPhotos: PhotoResponse[] = filterPhotos(filters, photosToUse);
