@@ -11,6 +11,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import ComputerIcon from "@mui/icons-material/Computer";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const pages = [{ id: 1, name: "Photos", href: "./" }];
 
@@ -32,43 +33,44 @@ function PrimaryNavBar() {
         <Container>
           <Toolbar disableGutters>
             <ComputerIcon />
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="./about"
-              sx={{
-                mx: 1,
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              PKANG DEV
-            </Typography>
-
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href="./about"
-              sx={{
-                mr: 2,
-                display: { xs: "flex", md: "none" },
-                flexGrow: 1,
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              PKANG DEV
-            </Typography>
+            <Link to="/about">
+              <Typography
+                variant="h6"
+                noWrap
+                component="span"
+                sx={{
+                  mx: 1,
+                  mr: 2,
+                  display: { xs: "none", md: "flex" },
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: "white",
+                  textDecoration: "none",
+                }}
+              >
+                PKANG DEV
+              </Typography>
+            </Link>
+            <Link to="/about">
+              <Typography
+                variant="h5"
+                noWrap
+                component="span"
+                sx={{
+                  mr: 2,
+                  display: { xs: "flex", md: "none" },
+                  flexGrow: 1,
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: "white",
+                  textDecoration: "none",
+                }}
+              >
+                PKANG DEV
+              </Typography>
+            </Link>
             <Box
               sx={{
                 flexGrow: 1,
@@ -111,13 +113,9 @@ function PrimaryNavBar() {
                     key={`menu-item-${page.id}`}
                     onClick={handleCloseNavMenu}
                   >
-                    <Typography
-                      textAlign="center"
-                      component="a"
-                      href={page.href}
-                    >
-                      {page.name}
-                    </Typography>
+                    <Link to={page.href}>
+                      <Typography textAlign="center">{page.name}</Typography>
+                    </Link>
                   </MenuItem>
                 ))}
               </Menu>
@@ -133,15 +131,16 @@ function PrimaryNavBar() {
               }}
             >
               {pages.map((page) => (
-                <Typography
-                  key={`page-link-page.id`}
-                  textAlign="center"
-                  component="a"
-                  href={page.href}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  {page.name}
-                </Typography>
+                <Link to={page.href}>
+                  <Typography
+                    key={`page-link-page.id`}
+                    textAlign="center"
+                    component="span"
+                    sx={{ my: 2, color: "white", display: "block" }}
+                  >
+                    {page.name}
+                  </Typography>
+                </Link>
               ))}
             </Box>
           </Toolbar>
