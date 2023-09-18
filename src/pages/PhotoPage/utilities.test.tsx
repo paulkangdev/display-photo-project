@@ -1,5 +1,17 @@
 import { beforeEach, describe, expect, test } from "vitest";
-import { AlbumError, bothDefined, maxNotDefined, maxOverHundred, maxTooLow, minGreaterThanMax, minNotDefined, minOverHundred, minTooLow, singleGreaterOneHundred, singleLessOrEqualToZero } from "./constants";
+import {
+  AlbumError,
+  bothDefined,
+  maxNotDefined,
+  maxOverHundred,
+  maxTooLow,
+  minGreaterThanMax,
+  minNotDefined,
+  minOverHundred,
+  minTooLow,
+  singleGreaterOneHundred,
+  singleLessOrEqualToZero,
+} from "./constants";
 import { determineHelperText, validateAlbumFilters } from "./utilities";
 import { fireEvent, render, screen } from "@testing-library/react";
 import PhotoOptionsInput from "./PhotoOptionsInput";
@@ -103,69 +115,69 @@ describe("utilities tests", () => {
 });
 
 describe("Photo Options Input functionality tests", () => {
-    beforeEach(() => {
-      render(<PhotoOptionsInput></PhotoOptionsInput>);
+  beforeEach(() => {
+    render(<PhotoOptionsInput setFilters={() => {}}></PhotoOptionsInput>);
+  });
+  describe("ensureNumberKeyDown functionality testing", () => {
+    test("Should not change single-album-number-input if non-numeric keys are pressed", async () => {
+      const singleInput = screen
+        .getByTestId("single-album-number-input")
+        .querySelector("input");
+      if (singleInput) {
+        fireEvent.change(singleInput, { target: { value: "A" } });
+        fireEvent.change(singleInput, { target: { value: "B" } });
+        fireEvent.change(singleInput, { target: { value: "A-aeerab" } });
+        expect(singleInput.value).toBe("");
+      }
     });
-    describe("ensureNumberKeyDown functionality testing", () => {
-      test("Should not change single-album-number-input if non-numeric keys are pressed", async () => {
-        const singleInput = screen
-          .getByTestId("single-album-number-input")
-          .querySelector("input");
-        if (singleInput) {
-          fireEvent.change(singleInput, { target: { value: 'A' } });
-          fireEvent.change(singleInput, { target: { value: 'B' } });
-          fireEvent.change(singleInput, { target: { value: 'A-aeerab' } });
-          expect(singleInput.value).toBe("");
-        }
-      });
-      test("Should change single-album-number-input if numeric keys are pressed", () => {
-        const singleInput = screen
-          .getByTestId("single-album-number-input")
-          .querySelector("input");
-        if (singleInput) {
-          fireEvent.change(singleInput, { target: { value: '123' } });
-          expect(singleInput.value).toBe("123");
-        }
-      });
-      test("Should not change max-album-number-input if non-numeric keys are pressed", async () => {
-        const singleInput = screen
-          .getByTestId("max-album-number-input")
-          .querySelector("input");
-        if (singleInput) {
-          fireEvent.change(singleInput, { target: { value: 'A' } });
-          fireEvent.change(singleInput, { target: { value: 'B' } });
-          fireEvent.change(singleInput, { target: { value: 'A-aeerab' } });
-          expect(singleInput.value).toBe("");
-        }
-      });
-      test("Should change max-album-number-input if numeric keys are pressed", () => {
-        const singleInput = screen
-          .getByTestId("max-album-number-input")
-          .querySelector("input");
-        if (singleInput) {
-          fireEvent.change(singleInput, { target: { value: '123' } });
-          expect(singleInput.value).toBe("123");
-        }
-      });
-      test("Should not change min-album-number-input if non-numeric keys are pressed", async () => {
-        const singleInput = screen
-          .getByTestId("min-album-number-input")
-          .querySelector("input");
-        if (singleInput) {
-          fireEvent.change(singleInput, { target: { value: 'A' } });
-          fireEvent.change(singleInput, { target: { value: 'B' } });
-          fireEvent.change(singleInput, { target: { value: 'A-aeerab' } });
-          expect(singleInput.value).toBe("");
-        }
-      });
-      test("Should change min-album-number-input if numeric keys are pressed", () => {
-        const singleInput = screen
-          .getByTestId("min-album-number-input")
-          .querySelector("input");
-        if (singleInput) {
-          fireEvent.change(singleInput, { target: { value: '123' } });
-          expect(singleInput.value).toBe("123");
-        }
-      });
+    test("Should change single-album-number-input if numeric keys are pressed", () => {
+      const singleInput = screen
+        .getByTestId("single-album-number-input")
+        .querySelector("input");
+      if (singleInput) {
+        fireEvent.change(singleInput, { target: { value: "123" } });
+        expect(singleInput.value).toBe("123");
+      }
+    });
+    test("Should not change max-album-number-input if non-numeric keys are pressed", async () => {
+      const singleInput = screen
+        .getByTestId("max-album-number-input")
+        .querySelector("input");
+      if (singleInput) {
+        fireEvent.change(singleInput, { target: { value: "A" } });
+        fireEvent.change(singleInput, { target: { value: "B" } });
+        fireEvent.change(singleInput, { target: { value: "A-aeerab" } });
+        expect(singleInput.value).toBe("");
+      }
+    });
+    test("Should change max-album-number-input if numeric keys are pressed", () => {
+      const singleInput = screen
+        .getByTestId("max-album-number-input")
+        .querySelector("input");
+      if (singleInput) {
+        fireEvent.change(singleInput, { target: { value: "123" } });
+        expect(singleInput.value).toBe("123");
+      }
+    });
+    test("Should not change min-album-number-input if non-numeric keys are pressed", async () => {
+      const singleInput = screen
+        .getByTestId("min-album-number-input")
+        .querySelector("input");
+      if (singleInput) {
+        fireEvent.change(singleInput, { target: { value: "A" } });
+        fireEvent.change(singleInput, { target: { value: "B" } });
+        fireEvent.change(singleInput, { target: { value: "A-aeerab" } });
+        expect(singleInput.value).toBe("");
+      }
+    });
+    test("Should change min-album-number-input if numeric keys are pressed", () => {
+      const singleInput = screen
+        .getByTestId("min-album-number-input")
+        .querySelector("input");
+      if (singleInput) {
+        fireEvent.change(singleInput, { target: { value: "123" } });
+        expect(singleInput.value).toBe("123");
+      }
     });
   });
+});

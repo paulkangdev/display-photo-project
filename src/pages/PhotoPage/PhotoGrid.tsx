@@ -23,7 +23,7 @@ function PhotoGrid(props: {
   const { photos, setCurrentPhoto, setShowModal } = props;
   const [page, setPage] = useState(1);
   const [elementsPerPage, setElementsPerPage] = useState(12);
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
 
@@ -66,7 +66,7 @@ function PhotoGrid(props: {
           <Box sx={{ display: "flex", justifyContent: "space-around" }}>
             <Button
               size="medium"
-              variant="text"
+              variant={elementsPerPage === 12 ? "outlined" : "text" }
               color={elementsPerPage === 12 ? "secondary" : "primary"}
               onClick={() => handleElementsPerPage(12)}
             >
@@ -74,8 +74,8 @@ function PhotoGrid(props: {
             </Button>
             <Button
               size="medium"
+              variant={elementsPerPage === 24 ? "outlined" : "text" }
               color={elementsPerPage === 24 ? "secondary" : "primary"}
-              variant="text"
               onClick={() => handleElementsPerPage(24)}
             >
               24
