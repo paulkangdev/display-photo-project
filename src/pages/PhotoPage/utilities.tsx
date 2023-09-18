@@ -156,7 +156,6 @@ export function determineHelperText(foundErrors: AlbumError[]) {
 }
 
 export function filterPhotos(filtersInput: number[], photos: PhotoResponse[]) {
-  console.log("Filter");
   if (filtersInput.length === 1) {
     return photos.filter((elem: PhotoResponse) => {
       return Number(elem.albumId) === filtersInput[0];

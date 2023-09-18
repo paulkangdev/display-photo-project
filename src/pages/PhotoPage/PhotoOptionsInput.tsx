@@ -6,7 +6,9 @@ import {
   determineHelperText,
 } from "./utilities";
 
-function PhotoOptionsInput(props: { setFilters: Function }) {
+function PhotoOptionsInput(props: {
+  setFilters: React.Dispatch<React.SetStateAction<number[]>>;
+}) {
   const { setFilters } = props;
   const [singleAlbum, setSingleAlbum] = useState<string>("");
   const [minAlbum, setMinAlbum] = useState<string>("");
@@ -14,7 +16,7 @@ function PhotoOptionsInput(props: { setFilters: Function }) {
 
   const foundErrors = validateAlbumFilters(singleAlbum, minAlbum, maxAlbum);
 
-  function handleSubmit(e: any) {
+  function handleSubmit() {
     if (foundErrors.length === 0) {
       const numericSingle = Number(singleAlbum);
       const numericMin = Number(minAlbum);
@@ -28,7 +30,7 @@ function PhotoOptionsInput(props: { setFilters: Function }) {
       console.log(foundErrors);
     }
   }
-  function handleReset(e: any) {
+  function handleReset() {
     setSingleAlbum("");
     setMinAlbum("");
     setMaxAlbum("");

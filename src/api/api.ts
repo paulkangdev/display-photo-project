@@ -7,6 +7,6 @@ export const api = axios.create({
 // Declare apiFunctions for use with useApi
 export type ApiFunction = (data: any[]) => Promise<AxiosResponse<any, any>>;
 
-export const getPhotos: ApiFunction = (data: any[]) => {
+export const getPhotos: ApiFunction = () => {
   return api.get("photos");
 };

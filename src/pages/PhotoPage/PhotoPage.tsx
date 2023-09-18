@@ -8,14 +8,15 @@ import { PhotoResponse } from "../../types/types";
 import { filterPhotos } from "./utilities";
 
 function PhotoPage() {
-  const [filters, setFilters] = useState([]);
+  const [filters, setFilters] = useState<number[]>([]);
   const getPhotosApi = useApi(getPhotos);
   const photosToUse: [] = getPhotosApi.data ? getPhotosApi.data : [];
 
-  const filteredPhotos: PhotoResponse[] = useMemo(() => {
-    return filterPhotos(filters, photosToUse);
-  }, [filters, photosToUse]);
-
+  const filteredPhotos: PhotoResponse[] = useMemo(
+    () => filterPhotos(filters, photosToUse),
+    [filters, photosToUse]
+  );
+  console.log(filters, photosToUse);
   useEffect(() => {
     getPhotosApi.request();
   }, []);
