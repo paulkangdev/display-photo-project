@@ -13,4 +13,5 @@ const vitestConfig: VitestUserConfigInterface = {
 export default defineConfig({
   plugins: [react()],
   test: vitestConfig.test,
+  base: '/display-photo-project/'
 });
