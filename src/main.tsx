@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+], { basename: "/display-photo-project/"});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
