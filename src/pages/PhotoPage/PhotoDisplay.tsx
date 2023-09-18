@@ -9,7 +9,7 @@ import { useState } from "react";
 import { PhotoResponse } from "../../types/types";
 import PhotoGrid from "./PhotoGrid";
 
-function PhotoDisplay(props: any) {
+function PhotoDisplay(props: { photos: PhotoResponse[] }) {
   const { photos } = props;
   const [showModal, setShowModal] = useState(false);
   const [currentPhoto, setCurrentPhoto] = useState<PhotoResponse>(

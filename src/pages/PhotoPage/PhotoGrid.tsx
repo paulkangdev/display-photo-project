@@ -12,8 +12,13 @@ import {
   Box,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+import { PhotoResponse } from "../../types/types";
 
-function PhotoGrid(props: any) {
+function PhotoGrid(props: {
+  photos: PhotoResponse[];
+  setCurrentPhoto: React.Dispatch<React.SetStateAction<PhotoResponse>>;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const { photos, setCurrentPhoto, setShowModal } = props;
   const [page, setPage] = useState(1);
   const [elementsPerPage, setElementsPerPage] = useState(12);
@@ -79,7 +84,7 @@ function PhotoGrid(props: any) {
         </Box>
       </Box>
       <Grid container spacing={2}>
-        {photosToDisplay?.map((elem: any) => (
+        {photosToDisplay?.map((elem: PhotoResponse) => (
           <Grid
             key={`grid-item-${elem.id}`}
             item

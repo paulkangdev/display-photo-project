@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { getPhotos } from "../../api/api";
 import { useApi } from "../../api/useApi";
 import PhotoDisplay from "./PhotoDisplay";
@@ -12,14 +12,11 @@ function PhotoPage() {
   const getPhotosApi = useApi(getPhotos);
   const photosToUse: [] = getPhotosApi.data ? getPhotosApi.data : [];
 
-  const filteredPhotos: PhotoResponse[] = useMemo(
-    () => filterPhotos(filters, photosToUse),
-    [filters, photosToUse]
-  );
-  console.log(filters, photosToUse);
   useEffect(() => {
     getPhotosApi.request();
-  }, []);
+  }, [getPhotosApi]);
+
+  const filteredPhotos: PhotoResponse[] = filterPhotos(filters, photosToUse);
 
   return (
     <>

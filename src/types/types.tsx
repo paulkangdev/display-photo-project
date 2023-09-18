@@ -1,7 +1,7 @@
 export type PhotoResponse = {
-  albumId?: string;
-  id?: string;
-  title?: string;
-  url?: string;
-  thumbnailUrl?: string;
+  albumId: string;
+  id: string;
+  title: string;
+  url: string;
+  thumbnailUrl: string;
 };
