@@ -12,7 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ComputerIcon from "@mui/icons-material/Computer";
 import { useState } from "react";
 
-const pages = [{ id: 1, name: "Photos", href: "/" }];
+const pages = [{ id: 1, name: "Photos", href: "./" }];
 
 function PrimaryNavBar() {
   // This navbar was mostly made from simple adaptations made to https://mui.com/material-ui/react-app-bar/#system-ResponsiveAppBar.js
