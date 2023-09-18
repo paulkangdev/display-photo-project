@@ -13,10 +13,12 @@ function PhotoOptionsInput(props: {
   const [singleAlbum, setSingleAlbum] = useState<string>("");
   const [minAlbum, setMinAlbum] = useState<string>("");
   const [maxAlbum, setMaxAlbum] = useState<string>("");
+  const [displayErrors, setDisplayErrors] = useState(false);
 
   const foundErrors = validateAlbumFilters(singleAlbum, minAlbum, maxAlbum);
 
   function handleSubmit() {
+    setDisplayErrors(false);
     if (foundErrors.length === 0) {
       const numericSingle = Number(singleAlbum);
       const numericMin = Number(minAlbum);
@@ -28,6 +30,7 @@ function PhotoOptionsInput(props: {
       }
     } else {
       console.log(foundErrors);
+      setDisplayErrors(true);
     }
   }
   function handleReset() {
@@ -52,7 +55,7 @@ function PhotoOptionsInput(props: {
             setSingleAlbum(event.target.value);
           }}
           value={singleAlbum}
-          error={foundErrors.length > 0}
+          error={displayErrors && foundErrors.length > 0}
           type="number"
           onKeyDown={ensureNumberKeyDown}
         ></TextField>
@@ -70,7 +73,7 @@ function PhotoOptionsInput(props: {
             setSingleAlbum("");
             setMinAlbum(event.target.value);
           }}
-          error={foundErrors.length > 0}
+          error={displayErrors && foundErrors.length > 0}
           value={minAlbum}
           type="number"
           onKeyDown={ensureNumberKeyDown}
@@ -83,7 +86,7 @@ function PhotoOptionsInput(props: {
             setSingleAlbum("");
             setMaxAlbum(event.target.value);
           }}
-          error={foundErrors.length > 0}
+          error={displayErrors && foundErrors.length > 0}
           value={maxAlbum}
           type="number"
           onKeyDown={ensureNumberKeyDown}
@@ -105,7 +108,7 @@ function PhotoOptionsInput(props: {
           </Button>
         </Box>
         <Box sx={{ width: "50%" }}>
-          {foundErrors.length > 0 && (
+          {(displayErrors && foundErrors.length > 0) && (
             <Typography
               component="h1"
               gutterBottom={false}
