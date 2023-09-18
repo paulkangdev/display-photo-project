@@ -36,7 +36,7 @@ function PhotoOptionsInput(props: {
     setMaxAlbum("");
     setFilters([]);
   }
-
+  const errorsToDisplay = determineHelperText(foundErrors);
   return (
     <>
       <Box component="form" autoComplete="off" sx={{ my: 2 }}>
@@ -120,7 +120,7 @@ function PhotoOptionsInput(props: {
               <Typography component="p" sx={{ fontWeight: "bold" }}>
                 Please correct the following errors:
               </Typography>
-              {determineHelperText(foundErrors)}
+              {errorsToDisplay}
             </Typography>
           )}
         </Box>

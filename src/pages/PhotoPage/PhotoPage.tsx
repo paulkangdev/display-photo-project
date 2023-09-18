@@ -17,7 +17,7 @@ function PhotoPage() {
       await getPhotosApi.request();
     }
     callPhotos();
-  }, [getPhotosApi]);
+  }, []);
 
   const filteredPhotos: PhotoResponse[] = filterPhotos(filters, photosToUse);
 

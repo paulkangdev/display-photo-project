@@ -10,6 +10,7 @@ import {
   Pagination,
   Container,
   Box,
+  Stack,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { PhotoResponse } from "../../types/types";
@@ -39,7 +40,6 @@ function PhotoGrid(props: {
   useEffect(() => {
     setPage(1);
   }, [photos]);
-
   return (
     <Container>
       <Box
@@ -51,14 +51,14 @@ function PhotoGrid(props: {
           flexWrap: "wrap",
         }}
       >
-        <Box sx={{ my: 1, display: "flex", alignItems: "center" }}>
+        <Stack sx={{ my: 1, display: "flex", alignItems: "center" }}>
           <Pagination
             size="large"
             count={pageCount}
             page={page}
             onChange={handleChange}
           />
-        </Box>
+        </Stack>
         <Box sx={{ my: 1 }}>
           <Typography component="p">
             Number of items to display per page:
