@@ -36,7 +36,7 @@ function PrimaryNavBar() {
               variant="h6"
               noWrap
               component="a"
-              href="/about"
+              href="./about"
               sx={{
                 mx: 1,
                 mr: 2,
@@ -55,7 +55,7 @@ function PrimaryNavBar() {
               variant="h5"
               noWrap
               component="a"
-              href="/about"
+              href="./about"
               sx={{
                 mr: 2,
                 display: { xs: "flex", md: "none" },
