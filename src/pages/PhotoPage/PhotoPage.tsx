@@ -7,7 +7,11 @@ import { Container } from "@mui/material";
 import { PhotoResponse } from "../../types/types";
 import { filterPhotos } from "./utilities";
 
-function PhotoPage() {
+function PhotoPage(props: { title: string }) {
+  const { title } = props;
+  useEffect(() => {
+    document.title = title;
+  }, []);
   const [filters, setFilters] = useState<number[]>([]);
   const getPhotosApi = useApi(getPhotos);
   const photosToUse: [] = getPhotosApi.data ? getPhotosApi.data : [];

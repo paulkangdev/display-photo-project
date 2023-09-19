@@ -6,8 +6,13 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import { useEffect } from "react";
 
-function About() {
+function AboutPage(props: { title: string }) {
+  const { title } = props;
+  useEffect(() => {
+    document.title = title;
+  }, []);
   return (
     <Container component="main">
       <Typography
@@ -249,4 +254,5 @@ function About() {
   );
 }
 
-export default About;
+AboutPage.title = "LT App - About Paul";
+export default AboutPage;
