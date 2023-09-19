@@ -23,6 +23,9 @@ function PhotoGrid(props: {
   const { photos, setCurrentPhoto, setShowModal } = props;
   const [page, setPage] = useState(1);
   const [elementsPerPage, setElementsPerPage] = useState(12);
+  const [photosToDisplay, setPhotosToDisplay] = useState<PhotoResponse[]>([]);
+  const [pageCount, setPageCount] = useState(10);
+
   const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
@@ -32,14 +35,17 @@ function PhotoGrid(props: {
     setElementsPerPage(numberOfElements);
     setPage(Math.floor(currentLowElement / numberOfElements) + 1);
   }
-  const minIndex = (page - 1) * elementsPerPage;
-  const maxIndex = page * elementsPerPage;
-  const pageCount = Math.ceil((photos.length - 1) / elementsPerPage);
-  const photosToDisplay = photos.slice(minIndex, maxIndex);
 
   useEffect(() => {
     setPage(1);
   }, [photos]);
+
+  useEffect(() => {
+    const minIndex = (page - 1) * elementsPerPage;
+    const maxIndex = page * elementsPerPage;
+    setPageCount(Math.ceil((photos.length - 1) / elementsPerPage));
+    setPhotosToDisplay(photos.slice(minIndex, maxIndex));
+  }, [page, elementsPerPage, photos]);
   return (
     <Container>
       <Box
@@ -66,7 +72,7 @@ function PhotoGrid(props: {
           <Box sx={{ display: "flex", justifyContent: "space-around" }}>
             <Button
               size="medium"
-              variant={elementsPerPage === 12 ? "outlined" : "text" }
+              variant={elementsPerPage === 12 ? "outlined" : "text"}
               color={elementsPerPage === 12 ? "secondary" : "primary"}
               onClick={() => handleElementsPerPage(12)}
             >
@@ -74,7 +80,7 @@ function PhotoGrid(props: {
             </Button>
             <Button
               size="medium"
-              variant={elementsPerPage === 24 ? "outlined" : "text" }
+              variant={elementsPerPage === 24 ? "outlined" : "text"}
               color={elementsPerPage === 24 ? "secondary" : "primary"}
               onClick={() => handleElementsPerPage(24)}
             >

@@ -137,9 +137,8 @@ function PrimaryNavBar(props: {
               }}
             >
               {pages.map((page) => (
-                <Link to={page.href}>
+                <Link key={`page-link-${page.id}`} to={page.href}>
                   <Typography
-                    key={`page-link-page.id`}
                     textAlign="center"
                     component="span"
                     sx={{ my: 2, color: "white", display: "block" }}
