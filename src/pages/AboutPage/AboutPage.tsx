@@ -12,7 +12,7 @@ function AboutPage(props: { title: string }) {
   const { title } = props;
   useEffect(() => {
     document.title = title;
-  }, []);
+  }, [title]);
   return (
     <Container component="main">
       <Typography
@@ -254,5 +254,4 @@ function AboutPage(props: { title: string }) {
   );
 }
 
-AboutPage.title = "LT App - About Paul";
 export default AboutPage;

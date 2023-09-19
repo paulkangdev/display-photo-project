@@ -32,7 +32,6 @@ function PhotoOptionsInput(props: {
         setFilters([numericMin, numericMax]);
       }
     } else {
-      console.log(foundErrors);
       setDisplayErrors(true);
     }
   }

@@ -1,28 +1,12 @@
-import { useState } from "react";
-import { ApiFunction } from "./api";
+import axios from "axios";
 
-export function useApi(apiFunction: ApiFunction) {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+const axiosClient = axios.create();
 
-  const request = async (...args: any[]) => {
-    setLoading(true);
-    try {
-      const requestArgs = [...args];
-      const result = await apiFunction(requestArgs);
-      setData(result.data);
-    } catch (err: any) {
-      setError(err.message || "Unexpected Error!");
-    } finally {
-      setLoading(false);
-    }
-  };
+axiosClient.defaults.baseURL = "https://jsonplaceholder.typicode.com/";
 
-  return {
-    data,
-    error,
-    loading,
-    request,
-  };
+export async function fetchAllPhotos() {
+    const sleep = (ms:number) => new Promise(
+    resolve => setTimeout(resolve, ms));
+    await sleep(5000);
+    return axiosClient.get("photos").then((res) => res);
 }

@@ -162,7 +162,6 @@ function PrimaryNavBar(props: {
               exclusive
               value={darkMode}
               onChange={(_event, darkModeValue) => {
-                console.log(darkModeValue);
                 if (darkModeValue !== null) {
                   setDarkMode(darkModeValue);
                 }

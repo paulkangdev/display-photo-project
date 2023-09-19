@@ -8,6 +8,8 @@ import {
 import { useState } from "react";
 import { PhotoResponse } from "../../types/types";
 import PhotoGrid from "./PhotoGrid";
+import { ErrorBoundary } from "react-error-boundary";
+import Fallback from "../../components/fallback/Fallback";
 
 function PhotoDisplay(props: { photos: PhotoResponse[] }) {
   const { photos } = props;
@@ -18,11 +20,15 @@ function PhotoDisplay(props: { photos: PhotoResponse[] }) {
 
   return (
     <>
-      <PhotoGrid
-        photos={photos}
-        setShowModal={setShowModal}
-        setCurrentPhoto={setCurrentPhoto}
-      ></PhotoGrid>
+      <ErrorBoundary
+        fallback={<Fallback message={"Error loading component"} />}
+      >
+        <PhotoGrid
+          photos={photos}
+          setShowModal={setShowModal}
+          setCurrentPhoto={setCurrentPhoto}
+        ></PhotoGrid>
+      </ErrorBoundary>
       <Dialog
         hideBackdrop={false}
         open={showModal}
