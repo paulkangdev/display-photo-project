@@ -78,6 +78,7 @@ export const ensureNumberKeyDown = (
         eventCode.includes("arrow") ||
         eventCode.includes("home") ||
         eventCode.includes("end") ||
+        eventCode.includes("tab") ||
         eventCode.includes("backspace") ||
         (eventCode.includes("numpad") && eventCode.length === 7))
     )

@@ -7,16 +7,22 @@ import {
   Container,
   Menu,
   MenuItem,
+  ToggleButton,
+  ToggleButtonGroup,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ComputerIcon from "@mui/icons-material/Computer";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 const pages = [{ id: 1, name: "Photos", href: "./" }];
 
-function PrimaryNavBar() {
-  // This navbar was mostly made from simple adaptations made to https://mui.com/material-ui/react-app-bar/#system-ResponsiveAppBar.js
+function PrimaryNavBar(props: {
+  darkMode: boolean;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const { darkMode, setDarkMode } = props;
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -144,6 +150,35 @@ function PrimaryNavBar() {
               ))}
             </Box>
           </Toolbar>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: {
+                md: "flex",
+                flexDirection: "row-reverse",
+              },
+            }}
+          >
+            <ToggleButtonGroup
+              exclusive
+              value={darkMode}
+              onChange={(_event, darkModeValue) => {
+                console.log(darkModeValue);
+                if (darkModeValue !== null) {
+                  setDarkMode(darkModeValue);
+                }
+              }}
+              aria-label="light or dark mode toggle"
+              sx={{ mx: 2 }}
+            >
+              <ToggleButton value={false} aria-label="set light mode">
+                <LightModeIcon>Light</LightModeIcon>
+              </ToggleButton>
+              <ToggleButton value={true} aria-label="set dark mode">
+                <DarkModeIcon>Dark</DarkModeIcon>
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </Box>
         </Container>
       </Box>
     </AppBar>
