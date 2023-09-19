@@ -20,6 +20,9 @@ function PhotoOptionsInput(props: {
   function handleSubmit() {
     setDisplayErrors(false);
     if (foundErrors.length === 0) {
+      if (!singleAlbum && !minAlbum && !maxAlbum) {
+        return;
+      }
       const numericSingle = Number(singleAlbum);
       const numericMin = Number(minAlbum);
       const numericMax = Number(maxAlbum);
@@ -108,7 +111,7 @@ function PhotoOptionsInput(props: {
           </Button>
         </Box>
         <Box sx={{ width: "50%" }}>
-          {(displayErrors && foundErrors.length > 0) && (
+          {displayErrors && foundErrors.length > 0 && (
             <Typography
               component="h1"
               gutterBottom={false}
