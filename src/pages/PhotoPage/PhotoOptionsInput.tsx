@@ -60,9 +60,10 @@ function PhotoOptionsInput(props: {
           error={displayErrors && foundErrors.length > 0}
           type="number"
           onKeyDown={ensureNumberKeyDown}
+          sx={{ mx: 1 }}
         ></TextField>
       </Box>
-      <Typography component="p">or</Typography>
+      <Typography component="p">-- or --</Typography>
       <Box component="form" sx={{ my: 2 }}>
         <Typography component="p" sx={{ my: 1 }}>
           Enter a range of album ids:
@@ -79,6 +80,7 @@ function PhotoOptionsInput(props: {
           value={minAlbum}
           type="number"
           onKeyDown={ensureNumberKeyDown}
+          sx={{ my: 1, mx: 1 }}
         ></TextField>
         <TextField
           id="max-album-number-input"
@@ -91,6 +93,7 @@ function PhotoOptionsInput(props: {
           error={displayErrors && foundErrors.length > 0}
           value={maxAlbum}
           type="number"
+          sx={{ my: 1, mx: 1 }}
           onKeyDown={ensureNumberKeyDown}
         ></TextField>
       </Box>
